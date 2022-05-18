@@ -18,10 +18,10 @@ export default async function handler(
   response: NextApiResponse,
 ) {
   const { method } = request;
-  const { name, email, country } = request.body;
 
   switch (method) {
     case 'POST':
+      const { name, email, country } = request.body;
       if (!name || !email || !country) {
         return response.status(400).json({ error: 'faltando dados.' });
       }
@@ -33,6 +33,16 @@ export default async function handler(
         return response.status(400).json({ error: 'erro ao criar o usuário' });
       }
       break;
+    case 'GET':
+      try {
+        const users = await User.find();
+
+        return response.status(200).json(users);
+      } catch (err) {
+        return response
+          .status(400)
+          .json({ error: 'falha ao buscar os usuários' });
+      }
 
     default:
       break;
