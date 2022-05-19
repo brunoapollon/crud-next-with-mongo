@@ -1,6 +1,5 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { User } from '../../../models/User';
+import User from '../../../models/User';
 
 interface IUser {
   name: string;
@@ -27,6 +26,24 @@ export default async function handler(
           .status(400)
           .json({ error: 'falha ao buscar o usuário.' });
       }
+    case 'PUT':
+      try {
+        const { userId } = request.query;
+        const { name, email, country } = request.body;
+
+        const user = await User.findOneAndUpdate(
+          { _id: userId },
+          { name, email, country },
+          { new: true },
+        );
+
+        return response.status(200).json(user);
+      } catch (err) {
+        return response
+          .status(400)
+          .json({ error: 'falha ao buscar o usuário.' });
+      }
+
     default:
       break;
   }

@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { User } from '../../../models/User';
+import User from '../../../models/User';
 
 interface IUser {
   name: string;
@@ -32,7 +32,6 @@ export default async function handler(
       } catch (err) {
         return response.status(400).json({ error: 'erro ao criar o usuário' });
       }
-      break;
     case 'GET':
       try {
         const users = await User.find();
