@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import api from '../../services/api';
 import styles from '../../styles/UserIndexPage.module.css';
+import { useRouter } from 'next/router';
 
 interface IUser {
   _id: string;
@@ -10,16 +11,12 @@ interface IUser {
   country: string;
 }
 
-interface IDataResponse {
-  data: IUser[];
-}
-
 type Props = {
   users: IUser[];
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const users = (await api.get<IDataResponse>('api/users')).data;
+  const users = (await api.get<IUser[]>('api/users')).data;
 
   return {
     props: { users },
@@ -27,6 +24,14 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const IndexUser: NextPage<Props> = ({ users }) => {
+  const router = useRouter();
+
+  const redirectToViewUser = useCallback(
+    (userId: string) => {
+      router.push(`users/${userId}`);
+    },
+    [router],
+  );
   return (
     <div className={styles.container}>
       <h1>Index Users</h1>
@@ -45,6 +50,14 @@ const IndexUser: NextPage<Props> = ({ users }) => {
                 <th className={styles.th}>{user.name}</th>
                 <th className={styles.th}>{user.email}</th>
                 <th className={styles.th}>{user.country}</th>
+                <th className={styles.th}>
+                  <button
+                    type="button"
+                    onClick={() => redirectToViewUser(user._id)}
+                  >
+                    Vizualizar
+                  </button>
+                </th>
               </tr>
             );
           })}
