@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../../styles/Home.module.css';
+import styles from '../../styles/UserStorePage.module.css';
 import { Form } from '@unform/web';
 import Input from '../../components/Input';
 import { createRef, useCallback } from 'react';
@@ -38,11 +38,17 @@ const StoreUser: NextPage = () => {
       </Head>
 
       <h1>Create user</h1>
-      <Form onSubmit={event => handleSubmitStoreUser(event)} ref={formRef}>
+      <Form
+        onSubmit={event => handleSubmitStoreUser(event)}
+        ref={formRef}
+        className={styles.form}
+      >
         <Input type="text" placeholder="nome" name="name" />
         <Input type="text" placeholder="email" name="email" />
         <Input type="text" placeholder="estado" name="country" />
-        <button type="submit">Enviar</button>
+        <button type="submit" className={styles.button}>
+          Enviar
+        </button>
       </Form>
     </div>
   );

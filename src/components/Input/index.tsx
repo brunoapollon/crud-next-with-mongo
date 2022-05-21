@@ -5,6 +5,7 @@ import React, {
   useEffect,
 } from 'react';
 import { useField } from '@unform/core';
+import styles from '../../styles/Input.module.css';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
@@ -23,7 +24,14 @@ const Input: FunctionComponent<InputProps> = ({ name, ...rest }) => {
     });
   }, [fieldName, inputRef, registerField]);
 
-  return <input defaultValue={defaultValue} ref={inputRef} {...rest} />;
+  return (
+    <input
+      defaultValue={defaultValue}
+      ref={inputRef}
+      {...rest}
+      className={styles.input}
+    />
+  );
 };
 
 export default Input;
