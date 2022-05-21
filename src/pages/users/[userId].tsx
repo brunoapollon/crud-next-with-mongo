@@ -3,6 +3,9 @@ import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import api from '../../services/api';
 import { ParsedUrlQuery } from 'querystring';
 
+import styles from '../../styles/ShowUserPage.module.css';
+import Link from 'next/link';
+
 interface IUser {
   _id: string;
   name: string;
@@ -52,10 +55,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const UserView: NextPage<Props> = ({ user }) => {
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Nome: {user.name}</h1>
       <h3>Email: {user.email}</h3>
       <h3>Estado: {user.country}</h3>
+      <Link href="/users">
+        <a>Voltar para a tabela de usuáros</a>
+      </Link>
     </div>
   );
 };

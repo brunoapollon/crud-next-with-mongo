@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import { createRef, useCallback } from 'react';
 import api from '../../services/api';
 import { FormHandles } from '@unform/core';
+import Link from 'next/link';
 
 interface IStoreUserSubmit {
   name: string;
@@ -50,6 +51,9 @@ const StoreUser: NextPage = () => {
           Enviar
         </button>
       </Form>
+      <Link href="/users">
+        <a>Voltar para a tabela de usuáros</a>
+      </Link>
     </div>
   );
 };

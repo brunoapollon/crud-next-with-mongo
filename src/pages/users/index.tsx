@@ -3,6 +3,7 @@ import { NextPage, GetStaticProps } from 'next';
 import api from '../../services/api';
 import styles from '../../styles/UserIndexPage.module.css';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface IUser {
   _id: string;
@@ -35,12 +36,16 @@ const IndexUser: NextPage<Props> = ({ users }) => {
   return (
     <div className={styles.container}>
       <h1>Index Users</h1>
+      <Link href="/users/store">
+        <a>Criar novo usuáro</a>
+      </Link>
       <table className={styles.table}>
         <thead>
           <tr className={styles.tr}>
             <th className={styles.th_title}>Nome</th>
             <th className={styles.th_title}>Email</th>
             <th className={styles.th_title}>Estado</th>
+            <th className={styles.th_title}>Vizualizar</th>
           </tr>
         </thead>
         <tbody>
