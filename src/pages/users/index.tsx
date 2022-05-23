@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import api from '../../services/api';
 import styles from '../../styles/UserIndexPage.module.css';
+import containerStyle from '../../styles/Container.module.css';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { IUser } from '../../interfaces/IUser';
@@ -46,7 +47,7 @@ const IndexUser: NextPage<Props> = ({ users }) => {
   );
 
   return (
-    <div className={styles.container}>
+    <div className={containerStyle.container}>
       <h1>Index Users</h1>
       <Link href="/users/create">
         <a>Criar novo usuáro</a>

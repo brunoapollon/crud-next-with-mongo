@@ -1,11 +1,11 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import api from '../../../services/api';
 import { ParsedUrlQuery } from 'querystring';
-
-import styles from '../../../styles/ShowUserPage.module.css';
 import Link from 'next/link';
+
+import api from '../../../services/api';
 import { IUser } from '../../../interfaces/IUser';
+import containerStyle from '../../../styles/Container.module.css';
 
 interface IUserProps {
   user: IUser;
@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 const ShowUser: NextPage<Props> = ({ user }) => {
   return (
-    <div className={styles.container}>
+    <div className={containerStyle.container}>
       <h1>Nome: {user.name}</h1>
       <h3>Email: {user.email}</h3>
       <h3>Estado: {user.country}</h3>

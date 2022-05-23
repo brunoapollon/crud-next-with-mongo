@@ -1,23 +1,19 @@
 import React, { createRef, useCallback, useEffect } from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import api from '../../../services/api';
 import { ParsedUrlQuery } from 'querystring';
-
-import styles from '../../../styles/ShowUserPage.module.css';
-import Link from 'next/link';
 import { Form } from '@unform/web';
-import Input from '../../../components/Input';
+import Link from 'next/link';
 import { FormHandles } from '@unform/core';
 import { useRouter } from 'next/router';
 
-interface IUpdateUserSubmit {
-  name: string;
-  email: string;
-  country: string;
-}
+import api from '../../../services/api';
+import Input from '../../../components/Input';
+import { IUser } from '../../../interfaces/IUser';
+import containerStyle from '../../../styles/Container.module.css';
+import formStyle from '../../../styles/Form.module.css';
+import buttonStyle from '../../../styles/Button.module.css';
 
-interface IUser {
-  _id: string;
+interface IUpdateUserSubmit {
   name: string;
   email: string;
   country: string;
@@ -92,13 +88,17 @@ const UserUpdate: NextPage<Props> = ({ user }) => {
   );
 
   return (
-    <div className={styles.container}>
+    <div className={containerStyle.container}>
       <h1>Update user</h1>
-      <Form onSubmit={event => handleUpdateUserSubmit(event)} ref={formRef}>
+      <Form
+        onSubmit={event => handleUpdateUserSubmit(event)}
+        ref={formRef}
+        className={formStyle.form}
+      >
         <Input type="text" placeholder="nome" name="name" />
         <Input type="text" placeholder="email" name="email" />
         <Input type="text" placeholder="estado" name="country" />
-        <button type="submit" className={styles.button}>
+        <button type="submit" className={buttonStyle.button}>
           Atualizar
         </button>
       </Form>
