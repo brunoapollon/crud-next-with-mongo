@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useState } from 'react';
 import { NextPage, GetStaticProps } from 'next';
 import api from '../../services/api';
 import styles from '../../styles/UserIndexPage.module.css';
@@ -26,6 +26,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const IndexUser: NextPage<Props> = ({ users }) => {
   const router = useRouter();
+  const [usersState, setUsersState] = useState(users);
 
   const redirectToViewUser = useCallback(
     (userId: string) => {
@@ -39,6 +40,15 @@ const IndexUser: NextPage<Props> = ({ users }) => {
       router.push(`users/updateUser/${userId}`);
     },
     [router],
+  );
+
+  const handleDeleteUser = useCallback(
+    async (userId: string) => {
+      await api.delete(`api/users/${userId}`);
+
+      setUsersState(usersState.filter(user => user._id !== userId));
+    },
+    [usersState],
   );
 
   return (
@@ -55,10 +65,11 @@ const IndexUser: NextPage<Props> = ({ users }) => {
             <th className={styles.th_title}>Estado</th>
             <th className={styles.th_title}>Vizualizar</th>
             <th className={styles.th_title}>Editar</th>
+            <th className={styles.th_title}>Excluir</th>
           </tr>
         </thead>
         <tbody>
-          {users.map(user => {
+          {usersState.map(user => {
             return (
               <tr key={user._id} className={styles.tr}>
                 <th className={styles.th}>{user.name}</th>
@@ -78,6 +89,14 @@ const IndexUser: NextPage<Props> = ({ users }) => {
                     onClick={() => redirectToUpdateUser(user._id)}
                   >
                     Editar
+                  </button>
+                </th>
+                <th className={styles.th}>
+                  <button
+                    type="button"
+                    onClick={() => handleDeleteUser(user._id)}
+                  >
+                    Excluir
                   </button>
                 </th>
               </tr>

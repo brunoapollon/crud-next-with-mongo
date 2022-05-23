@@ -43,6 +43,20 @@ export default async function handler(
           .status(400)
           .json({ error: 'falha ao buscar o usuário.' });
       }
+    case 'DELETE':
+      try {
+        const { userId } = request.query;
+
+        const user = await User.deleteOne({ _id: userId });
+
+        return response
+          .status(200)
+          .json({ message: 'usuário deletado com sucesso.' });
+      } catch (err) {
+        return response
+          .status(400)
+          .json({ error: 'falha ao buscar o usuário.' });
+      }
 
     default:
       break;
