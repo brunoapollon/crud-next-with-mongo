@@ -33,6 +33,14 @@ const IndexUser: NextPage<Props> = ({ users }) => {
     },
     [router],
   );
+
+  const redirectToUpdateUser = useCallback(
+    (userId: string) => {
+      router.push(`users/updateUser/${userId}`);
+    },
+    [router],
+  );
+
   return (
     <div className={styles.container}>
       <h1>Index Users</h1>
@@ -46,6 +54,7 @@ const IndexUser: NextPage<Props> = ({ users }) => {
             <th className={styles.th_title}>Email</th>
             <th className={styles.th_title}>Estado</th>
             <th className={styles.th_title}>Vizualizar</th>
+            <th className={styles.th_title}>Editar</th>
           </tr>
         </thead>
         <tbody>
@@ -61,6 +70,14 @@ const IndexUser: NextPage<Props> = ({ users }) => {
                     onClick={() => redirectToViewUser(user._id)}
                   >
                     Vizualizar
+                  </button>
+                </th>
+                <th className={styles.th}>
+                  <button
+                    type="button"
+                    onClick={() => redirectToUpdateUser(user._id)}
+                  >
+                    Editar
                   </button>
                 </th>
               </tr>
