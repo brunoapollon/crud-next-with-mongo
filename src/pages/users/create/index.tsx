@@ -1,24 +1,19 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import styles from '../../styles/UserStorePage.module.css';
+import styles from '../../../styles/UserStorePage.module.css';
 import { Form } from '@unform/web';
-import Input from '../../components/Input';
+import Input from '../../../components/Input';
 import { createRef, useCallback } from 'react';
-import api from '../../services/api';
+import api from '../../../services/api';
 import { FormHandles } from '@unform/core';
 import Link from 'next/link';
+import { IUserDTO } from '../../../interfaces/dtos/IUserDTO';
 
-interface IStoreUserSubmit {
-  name: string;
-  email: string;
-  country: string;
-}
-
-const StoreUser: NextPage = () => {
+const CreateUser: NextPage = () => {
   const formRef = createRef<FormHandles>();
 
-  const handleSubmitStoreUser = useCallback(
-    async ({ name, email, country }: IStoreUserSubmit) => {
+  const handleSubmitCreateUser = useCallback(
+    async ({ name, email, country }: IUserDTO) => {
       api.post('api/users', { name, email, country });
 
       formRef.current?.setData({
@@ -40,7 +35,7 @@ const StoreUser: NextPage = () => {
 
       <h1>Create user</h1>
       <Form
-        onSubmit={event => handleSubmitStoreUser(event)}
+        onSubmit={event => handleSubmitCreateUser(event)}
         ref={formRef}
         className={styles.form}
       >
@@ -58,4 +53,4 @@ const StoreUser: NextPage = () => {
   );
 };
 
-export default StoreUser;
+export default CreateUser;

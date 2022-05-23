@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       <Link href="/users">
         <a>Ir para a tabela de usuáros</a>
       </Link>
-      <Link href="/users/store">
+      <Link href="/users/create">
         <a>Criar novo usuáro</a>
       </Link>
     </div>

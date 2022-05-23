@@ -4,13 +4,7 @@ import api from '../../services/api';
 import styles from '../../styles/UserIndexPage.module.css';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
-interface IUser {
-  _id: string;
-  name: string;
-  email: string;
-  country: string;
-}
+import { IUser } from '../../interfaces/IUser';
 
 type Props = {
   users: IUser[];
@@ -30,14 +24,14 @@ const IndexUser: NextPage<Props> = ({ users }) => {
 
   const redirectToViewUser = useCallback(
     (userId: string) => {
-      router.push(`users/${userId}`);
+      router.push(`users/show/${userId}`);
     },
     [router],
   );
 
   const redirectToUpdateUser = useCallback(
     (userId: string) => {
-      router.push(`users/updateUser/${userId}`);
+      router.push(`users/update/${userId}`);
     },
     [router],
   );
@@ -54,7 +48,7 @@ const IndexUser: NextPage<Props> = ({ users }) => {
   return (
     <div className={styles.container}>
       <h1>Index Users</h1>
-      <Link href="/users/store">
+      <Link href="/users/create">
         <a>Criar novo usuáro</a>
       </Link>
       <table className={styles.table}>

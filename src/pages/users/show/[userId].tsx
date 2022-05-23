@@ -1,17 +1,11 @@
 import React from 'react';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import api from '../../services/api';
+import api from '../../../services/api';
 import { ParsedUrlQuery } from 'querystring';
 
-import styles from '../../styles/ShowUserPage.module.css';
+import styles from '../../../styles/ShowUserPage.module.css';
 import Link from 'next/link';
-
-interface IUser {
-  _id: string;
-  name: string;
-  email: string;
-  country: string;
-}
+import { IUser } from '../../../interfaces/IUser';
 
 interface IUserProps {
   user: IUser;
@@ -53,7 +47,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-const UserView: NextPage<Props> = ({ user }) => {
+const ShowUser: NextPage<Props> = ({ user }) => {
   return (
     <div className={styles.container}>
       <h1>Nome: {user.name}</h1>
@@ -66,4 +60,4 @@ const UserView: NextPage<Props> = ({ user }) => {
   );
 };
 
-export default UserView;
+export default ShowUser;
