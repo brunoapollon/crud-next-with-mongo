@@ -1,34 +1,48 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">crud next with mongo</h1>
+<p align="center">Projeto desenvolvido para aprender sobre NextJS aplicando um CRUD de usuários./p>
+<p align="center">
+  <a aria-label="Node" href="">
+    <img src="https://img.shields.io/badge/Node-16.15.0-informational"></img>
+  </a>
+  <a aria-label="TypeScript" href="">
+    <img src="https://img.shields.io/badge/Typescript-4.6.4-informational"></img>
+  </a>
+  <a aria-label="NextJS" href="">
+    <img src="https://img.shields.io/badge/NextJS-12.1.6-informational"></img>
+  </a>
+  <a aria-label="React" href="">
+    <img src="https://img.shields.io/badge/React-18.1.0-informational"></img>
+  </a>
+</p>
 
-## Getting Started
 
-First, run the development server:
+<p align="center">
+  <a href="#-execução">Execução</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-contribuir">Como contribuir</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## 🚀 Execução
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+_ps: Se precisar de ajuda para fazer um clone, esse [tutorial aqui](https://help.github.com/pt/github/creating-cloning-and-archiving-repositories/cloning-a-repository) vai te ajudar._
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+1. Abra o terminal do seu computador. Se estiver no Windows, pode ser o Prompt de Comando ou PowerShell. Caso use o WSL no Windows, use o Windows Terminal, usando o Ubuntu ou qualquer distribuição suportada pelo WSL.
+2. Altere o diretório de trabalho atual para o local em que deseja ter o código do módulo salvo no seu computador.
+3. Faça um clone desse repositório rodando: <br> `https://github.com/brunoapollon/crud-next-with-mongo.git`;
+4. Entre na pasta rodando pelo terminal: `cd crud-next-with-mongo`;
+6. Rode `npm install` ou `yarn` caso utilize para instalar as dependências do projeto;
+7. Rode `npx dev` ou `yarn dev` caso utilize para iniciar o projeto.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 🤔 Como contribuir
 
-## Learn More
+Se quiser contribuir para esse repositório aqui, seja corrigindo algum problema, adicionando comentários ou melhorando a documentação, você pode seguir esse tutorial abaixo:
 
-To learn more about Next.js, take a look at the following resources:
+- Faça [um fork](https://help.github.com/pt/github/getting-started-with-github/fork-a-repo) desse repositório;
+- Entre no seu perfil no GitHub e faça um clone do repositório que você fez um *fork*;
+- Crie uma *branch* com a sua alteração: `git checkout -b minha-alteracao`;
+- Faça as alterações necessárias no código ou na documentação;
+- Faça *commit* das suas alterações: `git commit -m 'feat: Minha nova feature'`;
+- Faça *push* para a sua *branch*: `git push origin minha-alteracao`;
+- Agora é só abrir a sua *pull request* no repositório que você fez o *fork*;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Depois que o *merge* da sua *pull request* for feito, você pode deletar a sua *branch*.
