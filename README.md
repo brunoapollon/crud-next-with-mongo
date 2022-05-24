@@ -1,5 +1,5 @@
 <h1 align="center">crud next with mongo</h1>
-<p align="center">Projeto desenvolvido para aprender sobre NextJS aplicando um CRUD de usuários./p>
+<p align="center">Projeto desenvolvido para aprender sobre NextJS aplicando um CRUD de usuários. </p>
 <p align="center">
   <a aria-label="Node" href="">
     <img src="https://img.shields.io/badge/Node-16.15.0-informational"></img>
